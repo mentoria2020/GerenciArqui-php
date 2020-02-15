@@ -15,6 +15,8 @@ class AuthController extends Action {
 		$user->__set('email', $_POST['email']);
 		$user->__set('password', $_POST['password']);
 
+		$user->login();
+
 		if($user->__get('id') != '' && $user->__get('name') != '') {
 			
 			session_start();
@@ -25,8 +27,7 @@ class AuthController extends Action {
 			header('Location: /list');
 
 		} else {
-			header('Location: /list');
-			/*header('Location: /?login=erro');
+			header('Location: /?login=erro');
 		}
 
 	}

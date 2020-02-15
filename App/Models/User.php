@@ -39,18 +39,7 @@ class user extends Model {
 
 	}
 
-	//Recuperar usuário por e-mail
-	public function getuserPorEmail() {
-		$query = "select name, email from users where email = :email";
-		$stmt = $this->db->prepare($query);
-		$stmt->bindValue(':email', $this->__get('email'));
-		$stmt->execute();
-
-		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-
-	}
-
-	public function excluirTweet($id_user_seguindo) {
+	public function deleteStage($id_user_seguindo) {
 		$query = "delete from tweets where id_users = :id_user and id = :tweet_id";
 
 		$stmt = $this->db->prepare($query);

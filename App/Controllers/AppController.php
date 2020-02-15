@@ -14,33 +14,33 @@ class AppController extends Action {
 
 		echo 'Login Validado!';
 
-		$tweet = Container::getModel('Tweet');
-		$tweet->__set('id_users', $_SESSION['id']);
-		$this->view->tweets = $tweet->getAll();
+		$project = Container::getModel('Project');
+		$project->__set('id_users', $_SESSION['id']);
+		$this->view->Projects = $project->getAll();
 
 		$user = Container::getModel('user');
 		$user->__set('id', $_SESSION['id']);
 
 		$this->view->nome = $user->getInfouser();
-		$this->view->total_tweets = $user->getTotaltweets();
+		$this->view->total_Projects = $user->getTotalProjects();
 		$this->view->seguindo = $user->getTotalSeguindo();
 		$this->view->seguidores = $user->getTotalSeguidores();
 
-		$this->render('timeline');
+		$this->render('list');
 	}
 
 	public function enroll() {
 
 		$this->validateLogin();
 
-		$tweet = Container::getModel('Tweet');
+		$project = Container::getModel('Project');
 
-		$tweet->__set('tweet', $_POST['tweet']);
-		$tweet->__set('id_users', $_SESSION['id']);
+		$project->__set('project', $_POST['project']);
+		$project->__set('id_users', $_SESSION['id']);
 
-		$tweet->salvar();
+		$project->salvar();
 
-		header('Location: /timeline');
+		header('Location: /list');
 
 		
 	}
@@ -67,18 +67,9 @@ class AppController extends Action {
 		$user = Container::getModel('user');
 		$user->__set('id', $_SESSION['id']);
 
-		if( $acao == 'seguir' ) {
+		$user->deixarSeguiruser($id_user_seguindo);
 
-			$user->seguiruser($id_user_seguindo);
-
-		} else if ( $acao == 'deixar_de_seguir' ) {
-
-			$user->deixarSeguiruser($id_user_seguindo);
-			
-		}
-
-		//header('Location: /quem_seguir');
-		header('Location: /quem_seguir?pesquisar='.$nome);
+		header('Location: /list);
 		
 	}
 
