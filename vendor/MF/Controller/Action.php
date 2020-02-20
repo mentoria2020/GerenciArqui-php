@@ -23,6 +23,8 @@ abstract class Action {
 	protected function content() {
 		$classAtual = get_class($this);
 
+		echo $classAtual;
+
 		$classAtual = str_replace('App\\Controllers\\', '', $classAtual);
 
 		$classAtual = strtolower(str_replace('Controller', '', $classAtual));

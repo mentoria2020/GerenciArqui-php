@@ -1,14 +1,14 @@
 <nav class="navbar navbar-expand-lg menu">
 	<div class="container">
 	  <div class="navbar-nav">
-	  	<a class="menuItem" href="/timeline">
+	  	<a class="menuItem" href="/list">
 	  		Home
 	  	</a>
 
 	  	<a class="menuItem" href="/sair">
 	  		Sair
 	  	</a>
-			<img src="/img/twitter_logo.png" class="menuIco" />
+			<img src="/img/gerenciarq_logo.jpeg" class="menuIco" />
 	  </div>
 	</div>
 </nav>
@@ -16,7 +16,7 @@
 <div class="container mt-5">
 	<div class="row pt-2">
 		
-		<div class="col-md-3">
+		<div class="col-md-4">
 
 			<div class="perfil">
 				<div class="perfilTopo">
@@ -27,24 +27,14 @@
 					
 					<div class="row mt-2 mb-2">
 						<div class="col mb-2">
-							<span class="perfilPainelNome"><?php print_r($this->view->nome['nome']);?></span>
+							<span class="perfilPainelNome"><?php print_r($this->view->name['name']);?></span>
 						</div>
 					</div>
 					<div class="row mb-2">
 
 						<div class="col">
-							<span class="perfilPainelItem">Tweets</span><br />
+							<span class="perfilPainelItem">Tipode Acesso:</span><br />
 							<span class="perfilPainelItemValor"><?php print_r($this->view->total_tweets['total_tweet']);?></span>
-						</div>
-
-						<div class="col">
-							<span class="perfilPainelItem">Seguindo</span><br />
-							<span class="perfilPainelItemValor"><?php print_r($this->view->seguindo['total_seguindo']);?></span>
-						</div>
-
-						<div class="col">
-							<span class="perfilPainelItem">Seguidores</span><br />
-							<span class="perfilPainelItemValor"><?php print_r($this->view->seguidores['total_seguidores']);?></span>
 						</div>
 
 					</div>
@@ -54,14 +44,14 @@
 
 		</div>
 
-		<div class="col-md-6">
+		<div class="col-md-8">
 			<div class="row mb-2">
 				<div class="col tweetBox">
 					<form method="post" action="/tweet">
 						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="tweet"></textarea>
 						
 						<div class="col mt-2 d-flex justify-content-end">
-							<button type="submit" class="btn btn-primary">Tweet</button>
+							<button type="submit" class="btn btn-primary">Cadastrar novo projeto</button>
 						</div>
 
 					</form>
@@ -86,15 +76,6 @@
 				</div>
 			<?php } ?>
 
-		</div>
-
-
-		<div class="col-md-3">
-			<div class="quemSeguir">
-				<span class="quemSeguirTitulo">Quem seguir</span><br />
-				<hr />
-				<a href="/quem_seguir" class="quemSeguirTxt">Procurar por pessoas conhecidas</a>
-			</div>
 		</div>
 
 	</div>

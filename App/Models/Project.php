@@ -4,25 +4,28 @@ namespace App\Models;
 
 use MF\Model\Model;
 
-class Tweet extends Model {
+class Project extends Model {
 
 	private $id;
-	private $id_usuarios;
-	private $tweet;
-	private $data;
+	private $id_stage;
+	private $id_arq;
+	private $id_client;
+	private $project_name;
+	private $stage_title;
+	private $stage_description;
 
-	public function __get($atributo) {
-		return $this->$atributo;
+	public function __get($attr) {
+		return $this->$attr;
 	}
 
-	public function __set($atributo, $valor) {
-		$this->$atributo = $valor;
+	public function __set($attr, $value) {
+		$this->$attr = $value;
 	}
 
 	//Salvar
-	public function salvar() {
+	public function save() {
 
-		$query = "insert into tweets(id_usuarios, tweet)values(:id_usuarios, :tweet)";
+		$query = "insert into projects(id_usuarios, tweet)values(:id_usuarios, :tweet)";
 		$stmt = $this->db->prepare($query);
 		$stmt->bindValue(':id_usuarios', $this->__get('id_usuarios'));
 		$stmt->bindValue(':tweet', $this->__get('tweet'));

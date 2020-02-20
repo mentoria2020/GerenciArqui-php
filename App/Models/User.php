@@ -4,7 +4,7 @@ namespace App\Models;
 
 use MF\Model\Model;
 
-class user extends Model {
+class User extends Model {
 
 	private $id;
 	private $type;
@@ -39,12 +39,35 @@ class user extends Model {
 
 	}
 
-	public function deleteStage($id_user_seguindo) {
+	public function getInfouser() {
+
+		$query = "select name from users where id = :id_usuario";
+		$stmt = $this->db->prepare($query);
+		$stmt->bindValue(':id_usuario', $this->__get('id'));
+		$stmt->execute();
+
+		return $stmt->fetch(\PDO::FETCH_ASSOC);
+
+	}
+
+	public function deleteStage($id_stage) {
+		$query = "delete from stages where id_users = :id_user and id = :stage_id";
+
+		$stmt = $this->db->prepare($query);
+		$stmt->bindValue(':id_user', $this->__get('id'));
+		$stmt->bindValue(':stage_id', $stage['id']);
+		$stmt->execute();
+
+		return true;
+
+	}
+
+	public function deleteProject($id_project) {
 		$query = "delete from tweets where id_users = :id_user and id = :tweet_id";
 
 		$stmt = $this->db->prepare($query);
 		$stmt->bindValue(':id_user', $this->__get('id'));
-		$stmt->bindValue(':tweet_id', $tweet['id']);
+		$stmt->bindValue(':stage_id', $stage['id']);
 		$stmt->execute();
 
 		return true;

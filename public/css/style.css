@@ -82,20 +82,20 @@ h2 {
 .menuItem, .menuItem:hover {
     font-size: 13px;
     font-weight: bold;
-    color: #1DA1F2;
+    color: rgb(3, 3, 3);
     text-decoration: none;
     margin-right: 25px;
 
 }
 
 .menuIco {
-    width: 31px;
-    height: 23px;
+    width: 160px;
+    /*height: 23px;*/
     position:absolute;
     top:50%;
     left:50%;
-    margin-top:-10px;
-    margin-left:-15px;
+    margin-top: -20px;
+    margin-left: 0px;
 }
 
 .perfil {

@@ -12,19 +12,15 @@ class AppController extends Action {
 
 		$this->validateLogin();
 
-		echo 'Login Validado!';
-
 		$project = Container::getModel('Project');
-		$project->__set('id_users', $_SESSION['id']);
-		$this->view->Projects = $project->getAll();
+		$project->__set('id', $_SESSION['id']);
+		$this->view->projects = $project->getAll();
 
-		$user = Container::getModel('user');
+		$user = Container::getModel('User');
 		$user->__set('id', $_SESSION['id']);
 
 		$this->view->nome = $user->getInfouser();
-		$this->view->total_Projects = $user->getTotalProjects();
-		$this->view->seguindo = $user->getTotalSeguindo();
-		$this->view->seguidores = $user->getTotalSeguidores();
+		//$this->view->total_Projects = $user->getTotalProjects();
 
 		$this->render('list');
 	}
@@ -67,9 +63,16 @@ class AppController extends Action {
 		$user = Container::getModel('user');
 		$user->__set('id', $_SESSION['id']);
 
-		$user->deixarSeguiruser($id_user_seguindo);
+		if( $acao == 'delete_project' ) {
 
-		header('Location: /list);
+			$user->deleteProject($id_project);
+
+		} else if ( $acao == 'delete_stage' ) {
+
+			$user->deleteStage($id_stage);
+		}
+		
+		header('Location: /list');
 		
 	}
 
