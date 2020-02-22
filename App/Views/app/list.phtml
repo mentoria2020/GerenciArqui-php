@@ -23,14 +23,14 @@
 				<div class="row mt-2 mb-2">
 					<div class="col mb-2">
 						<span class="perfilPainelItem">Nome:</span><br />
-						<span class="perfilPainelNome"><?php print_r($this->view->name['name']);?></span>
+						<span class="perfilPainelNome"><?php print_r($this->view->name['name']);?>Arquiteto X</span>
 					</div>
 				</div>
 				<div class="row mb-2">
 
 					<div class="col">
 						<span class="perfilPainelItem">Tipode Acesso:</span><br />
-						<span class="perfilPainelItemValor"><?php print_r($this->view->profile['total_tweet']);?></span>
+						<span class="perfilPainelItemValor"><?php print_r($this->view->profile['total_tweet']);?>Profissional</span>
 					</div>
 
 				</div>
@@ -39,13 +39,6 @@
 	
 
 		<div class="col-md-8">
-			<!--div class="row mb-2"-->
-				<!--div class="col tweetBox"-->
-					<!--form method="post" action="/project"-->
-						<!--textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="project"></textarea>
-						
-						<div class="col mt-2 d-flex justify-content-end">
-							<button type="submit" class="btn btn-primary">Cadastrar novo projeto</button>
 						</div-->
 					<form action="/project" method="post">
 						<div class="row">
@@ -57,8 +50,6 @@
 							</div>
 						</div>
 					</form>
-				<!--/div-->
-			<!--/div-->
 
 			<?php foreach($this->view->tweets as $id_tweet => $tweet) { ?>
 				<div class="row tweet">
@@ -70,13 +61,34 @@
 							<form>
 								<div class="col d-flex justify-content-end">
 									<a href="/acao?acao=deixar_de_seguir&id_usuario=<?=$usuario['id']?>" class="btn btn-danger"><small>Remover</small></a>
-									<!--<button type="submit" class="btn btn-danger"><small>Remover</small></button>-->
 								</div>
 							</form>
 						<?php } ?>
 					</div>
 				</div>
 			<?php } ?>
+
+
+			<div class="row tweet">
+					<div class="col">
+						<strong>Projeto 1</strong>
+						<form>
+							<div class="col d-flex justify-content-end">
+								<a href="/action?action=excludeProject=<?=$project['id']?>" class="btn btn-danger"><small>Apagar</small></a>
+							</div>
+						</form>
+					</div>
+			</div>
+			<div class="row tweet">
+					<div class="col">
+						<strong>Projeto 2</strong>
+						<form>
+							<div class="col d-flex justify-content-end">
+								<a href="/action?action=excludeProject=<?=$project['id']?>" class="btn btn-danger"><small>Apagar</small></a>
+							</div>
+						</form>
+					</div>
+				</div>
 
 		</div>
 
