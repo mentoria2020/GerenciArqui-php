@@ -5,7 +5,7 @@
 	  		Home
 	  	</a>
 
-	  	<a class="menuItem" href="/sair">
+	  	<a class="menuItem" href="/logout">
 	  		Sair
 	  	</a>
 			<img src="/img/gerenciarq_logo.jpeg" class="menuIco" />
@@ -18,45 +18,47 @@
 		
 		<div class="col-md-4">
 
-			<div class="perfil">
-				<div class="perfilTopo">
-
-				</div>
-
-				<div class="perfilPainel">
+			<div class="perfilPainel">
 					
-					<div class="row mt-2 mb-2">
-						<div class="col mb-2">
-							<span class="perfilPainelNome"><?php print_r($this->view->name['name']);?></span>
-						</div>
+				<div class="row mt-2 mb-2">
+					<div class="col mb-2">
+						<span class="perfilPainelItem">Nome:</span><br />
+						<span class="perfilPainelNome"><?php print_r($this->view->name['name']);?></span>
 					</div>
-					<div class="row mb-2">
+				</div>
+				<div class="row mb-2">
 
-						<div class="col">
-							<span class="perfilPainelItem">Tipode Acesso:</span><br />
-							<span class="perfilPainelItemValor"><?php print_r($this->view->total_tweets['total_tweet']);?></span>
-						</div>
-
+					<div class="col">
+						<span class="perfilPainelItem">Tipode Acesso:</span><br />
+						<span class="perfilPainelItemValor"><?php print_r($this->view->profile['total_tweet']);?></span>
 					</div>
 
 				</div>
 			</div>
-
 		</div>
+	
 
 		<div class="col-md-8">
-			<div class="row mb-2">
-				<div class="col tweetBox">
-					<form method="post" action="/tweet">
-						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="tweet"></textarea>
+			<!--div class="row mb-2"-->
+				<!--div class="col tweetBox"-->
+					<!--form method="post" action="/project"-->
+						<!--textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="project"></textarea>
 						
 						<div class="col mt-2 d-flex justify-content-end">
 							<button type="submit" class="btn btn-primary">Cadastrar novo projeto</button>
+						</div-->
+					<form action="/project" method="post">
+						<div class="row">
+							<div class="col">
+								<input type="text" class="form-control" placeholder="Digit o nome do Projeto" name="project">
+							</div>
+							<div class="col-auto">
+								<button type="submit" class="btn btn-secondary">Cadastrar novo projeto</button>
+							</div>
 						</div>
-
 					</form>
-				</div>
-			</div>
+				<!--/div-->
+			<!--/div-->
 
 			<?php foreach($this->view->tweets as $id_tweet => $tweet) { ?>
 				<div class="row tweet">
